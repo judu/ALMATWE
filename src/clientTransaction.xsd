@@ -23,6 +23,43 @@
             <xsd:element name="id" type="xsd:int"/>
         </xsd:sequence>
     </xsd:complexType>
+    <xsd:complexType name="hotelBookingType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="bookingNum" type="xsd:int"/>
+            <xsd:element name="address" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="restaurantBookingType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="bookingNum" type="xsd:int"/>
+            <xsd:element name="address" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="travelBookingType">
+        <xsd:sequence>
+            <xsd:element name="travelNum" type="xsd:string"/>
+            <xsd:element name="hourOfDeparture" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eventBookingRequestType">
+        <xsd:sequence>
+            <xsd:element name="event" type="tns:eventType" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eventBookingResponseType">
+        <xsd:sequence>
+            <xsd:element name="event" type="tns:eventType" />
+            <xsd:element name="hotel" type="tns:hotelBookingType" />
+            <xsd:element name="restaurant" type="tns:restaurantBookingType" />
+            <xsd:element name="travel" type="tns:travelBookingType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
     <xsd:element name="lookupRequest" type="tns:eventLookupRequestType"/>
     <xsd:element name="lookupResponse" type="tns:eventLookupResponseType"/>
+    <xsd:element name="bookingResponse" type="tns:eventBookingResponseType" />
+    <xsd:element name="bookingRequest" type="tns:eventBookingRequestType" />
 </xsd:schema>

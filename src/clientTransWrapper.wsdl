@@ -14,10 +14,22 @@
     <message name="clientTransWrapperOperationResponse">
         <part name="eventLookupResponse" element="ns:lookupResponse"/>
     </message>
+    <message name="bookEventMessageInput">
+        <part name="request" element="ns:bookingRequest"/>
+    </message>
+    <message name="bookEventMessageOutput">
+        <part name="response" element="ns:bookingResponse"/>
+    </message>
     <portType name="clientTransWrapperPortType">
         <operation name="clientTransWrapperOperation">
             <input name="input1" message="tns:clientTransWrapperOperationRequest"/>
             <output name="output1" message="tns:clientTransWrapperOperationResponse"/>
+        </operation>
+    </portType>
+    <portType name="eventBookingPortType">
+        <operation name="bookEvent">
+            <input name="input1" message="tns:bookEventMessageInput"/>
+            <output name="output1" message="tns:bookEventMessageOutput"/>
         </operation>
     </portType>
     <binding name="ALMATWEBinding" type="tns:clientTransWrapperPortType">
@@ -38,10 +50,17 @@
         </port>
     </service>
     <plnk:partnerLinkType name="clientTransWrapper">
-        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes.
 In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
 A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
         <plnk:role name="clientTransWrapperPortTypeRole" portType="tns:clientTransWrapperPortType"/>
     </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="clientTransWrapper2">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes.
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="eventBookingPortTypeRole" portType="tns:eventBookingPortType"/>
+    </plnk:partnerLinkType>
 </definitions>
+
 
